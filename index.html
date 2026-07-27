@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Политики конфиденциальности</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1a1a2e;
+    --muted: #5b5b73;
+    --card: #f5f5fa;
+    --border: #e2e2ec;
+    --accent: #3b3bdc;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0d0d16;
+      --fg: #e8e8f0;
+      --muted: #9a9ab0;
+      --card: #16161f;
+      --border: #262633;
+      --accent: #8a8aff;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--fg);
+    background: var(--bg);
+    -webkit-text-size-adjust: 100%;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 20px 64px;
+  }
+  header { margin-bottom: 32px; }
+  h1 { font-size: 1.7rem; margin: 0 0 8px; }
+  .lead { color: var(--muted); margin: 0; }
+  ul.apps { list-style: none; padding: 0; margin: 24px 0 0; }
+  ul.apps li { margin: 0 0 12px; }
+  a.app {
+    display: block;
+    padding: 16px 18px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--fg);
+    transition: border-color .15s;
+  }
+  a.app:hover { border-color: var(--accent); }
+  a.app .name { font-weight: 600; }
+  a.app .sub { display: block; color: var(--muted); font-size: .9rem; margin-top: 2px; }
+  footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: .85rem;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Политики конфиденциальности</h1>
+    <p class="lead">Документы о защите данных для мобильных приложений.</p>
+  </header>
+
+  <ul class="apps">
+    <li>
+      <a class="app" href="generate-image/privacy.html">
+        <span class="name">Сгенерировать изображение</span>
+        <span class="sub">Генерация изображений по текстовому описанию — политика конфиденциальности</span>
+      </a>
+    </li>
+  </ul>
+
+  <footer>
+    Контакт по вопросам обработки данных:
+    <a href="mailto:cabarnet713@gmail.com">cabarnet713@gmail.com</a>
+  </footer>
+</div>
+</body>
+</html>
