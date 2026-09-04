@@ -38,22 +38,43 @@
     padding: 40px 20px 72px;
   }
   a { color: var(--accent); }
-  .back { display: inline-block; margin-bottom: 24px; font-size: .9rem; text-decoration: none; }
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+  .back { font-size: .9rem; text-decoration: none; }
+  .langswitch {
+    display: inline-flex;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .langswitch button {
+    appearance: none;
+    border: 0;
+    background: var(--card);
+    color: var(--muted);
+    font: inherit;
+    font-size: .85rem;
+    letter-spacing: .02em;
+    padding: 6px 14px;
+    cursor: pointer;
+  }
+  .langswitch button + button { border-left: 1px solid var(--border); }
+  .langswitch button[aria-pressed="true"] {
+    background: var(--accent);
+    color: #fff;
+  }
   h1 { font-size: 1.6rem; margin: 0 0 4px; }
   h2 { font-size: 1.2rem; margin: 36px 0 10px; }
   .meta { color: var(--muted); font-size: .9rem; margin: 0 0 8px; }
   p { margin: 10px 0; }
   ul { margin: 10px 0; padding-left: 22px; }
   li { margin: 4px 0; }
-  .note {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--accent);
-    border-radius: 8px;
-    padding: 12px 16px;
-    margin: 16px 0;
-    font-size: .95rem;
-  }
   .table-scroll { overflow-x: auto; margin: 14px 0; }
   table {
     border-collapse: collapse;
@@ -68,6 +89,7 @@
     vertical-align: top;
   }
   th { background: var(--card); font-weight: 600; }
+  td .note { display: block; color: var(--muted); font-size: .88em; margin-top: 2px; }
   code {
     background: var(--card);
     border: 1px solid var(--border);
@@ -82,146 +104,333 @@
     color: var(--muted);
     font-size: .85rem;
   }
-  .todo {
-    background: #fff4e5;
-    border: 1px solid #e0b070;
-    color: #6b4a12;
-    border-radius: 8px;
-    padding: 10px 14px;
-    margin: 16px 0;
-    font-size: .9rem;
-  }
-  @media (prefers-color-scheme: dark) {
-    .todo { background: #2a2010; border-color: #6b4a12; color: #e8c98a; }
-  }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <a class="back" href="../index.html">← ко всем политикам</a>
-
-  <h1>Политика конфиденциальности</h1>
-  <p class="meta">Приложение «Сгенерировать изображение» (<code>com.generateimagefree.app</code>)</p>
-  <p class="meta">Дата последнего обновления: 2 сентября 2026 г.</p>
-
-  <h2>1. Общие положения</h2>
-  <p>
-    Настоящая Политика описывает, какие данные обрабатывает мобильное приложение
-    «Сгенерировать изображение» (далее — Приложение) и на каких условиях.
-  </p>
-  <p>
-    Оператор обработки данных: Ахметов Руслан Александрович.
-    Контакт для обращений по вопросам обработки персональных данных:
-    <a href="mailto:vopros.tvoy@gmail.com">vopros.tvoy@gmail.com</a>.
-  </p>
-  <p>
-    Используя Приложение, пользователь соглашается с обработкой данных в объёме и
-    для целей, описанных ниже. Приложение не требует регистрации и не создаёт
-    учётных записей.
-  </p>
-
-  <h2>2. Какие данные обрабатываются</h2>
-  <p>Приложение не запрашивает имя, телефон, адрес или иные контактные данные пользователя. При работе обрабатываются:</p>
-  <ul>
-    <li><strong>Рекламный идентификатор</strong> устройства (Google Advertising ID) — используется рекламным модулем.</li>
-    <li><strong>IP-адрес</strong> — передаётся при любом сетевом запросе.</li>
-    <li><strong>Технические данные устройства</strong>: модель, версия операционной системы, характеристики, необходимые для показа рекламы.</li>
-    <li><strong>Текст запроса (промпт)</strong>, который пользователь вводит для генерации изображения. Промпт передаётся на сервер оператора, где переводится и используется для генерации изображения (см. раздел 4). Не вводите в поле промпта персональные или конфиденциальные сведения.</li>
-  </ul>
-
-  <h2>3. Цели обработки</h2>
-  <ul>
-    <li>Генерация изображения по текстовому запросу пользователя.</li>
-    <li>Перевод запроса на английский язык для повышения качества генерации.</li>
-    <li>Показ рекламы для поддержки бесплатной работы Приложения.</li>
-  </ul>
-
-  <h2>4. Передача данных третьим лицам</h2>
-  <p>
-    Приложение обращается напрямую только к серверу оператора (размещён в
-    Yandex Cloud, РФ) и к рекламному модулю. Сервер оператора, в свою очередь,
-    для перевода и генерации изображения обращается к сервисам ниже. Каждый
-    сервис обрабатывает данные в соответствии со своей политикой
-    конфиденциальности.
-  </p>
-  <div class="table-scroll">
-    <table>
-      <thead>
-        <tr><th>Сервис</th><th>Какие данные</th><th>Назначение</th><th>Юрисдикция</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Яндекс.Реклама (Yandex Mobile Ads)</td>
-          <td>Рекламный идентификатор, IP-адрес, технические данные устройства</td>
-          <td>Показ рекламы</td>
-          <td>Российская Федерация</td>
-        </tr>
-        <tr>
-          <td>Сервер оператора (Yandex Cloud)</td>
-          <td>Текст запроса, IP-адрес</td>
-          <td>Приём запроса, перевод и генерация изображения</td>
-          <td>Российская Федерация</td>
-        </tr>
-        <tr>
-          <td>Яндекс.Переводчик (Yandex Translate)</td>
-          <td>Текст запроса</td>
-          <td>Перевод запроса (вызывается сервером оператора)</td>
-          <td>Российская Федерация</td>
-        </tr>
-        <tr>
-          <td>Pollinations (image.pollinations.ai)</td>
-          <td>Текст запроса</td>
-          <td>Генерация изображения (вызывается сервером оператора)</td>
-          <td>За пределами РФ</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="topbar">
+    <a class="back" href="../index.html">
+      <span data-lang="ru">← ко всем политикам</span>
+      <span data-lang="en">← all policies</span>
+    </a>
+    <div class="langswitch">
+      <button type="button" data-set-lang="ru" aria-pressed="true">RU</button>
+      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+    </div>
   </div>
-  <p>
-    Сгенерированное изображение при сохранении записывается в галерею устройства
-    пользователя и никуда не передаётся.
-  </p>
 
-  <h2>5. Трансграничная передача</h2>
-  <p>
-    Сервис генерации изображения (Pollinations) расположен за пределами
-    Российской Федерации. Сервер оператора при генерации передаёт ему текст
-    запроса — это является трансграничной передачей данных на территорию
-    иностранного государства. Перевод и показ рекламы выполняются в пределах РФ.
-  </p>
+  <section data-lang="ru">
+    <h1>Политика конфиденциальности</h1>
+    <p class="meta">Приложение «Сгенерировать изображение» / «Generate Image» (<code>com.generateimagefree.app</code>)</p>
+    <p class="meta">Дата последнего обновления: 4 сентября 2026 г.</p>
 
-  <h2>6. Хранение данных</h2>
-  <p>
-    Сервер оператора обрабатывает запрос «на лету» — он передаёт промпт сервисам
-    перевода и генерации и возвращает результат, не сохраняя промпты в базе
-    данных и не формируя профилей пользователей. Сроки хранения переданных данных
-    определяются политиками сторонних сервисов, перечисленных выше. Настройки
-    Приложения хранятся локально на устройстве.
-  </p>
+    <h2>1. Общие положения</h2>
+    <p>
+      Настоящая Политика описывает, какие данные обрабатывает мобильное приложение
+      «Сгенерировать изображение» (в Google Play — «Generate Image»), далее — Приложение,
+      и на каких условиях.
+    </p>
+    <p>
+      Оператор обработки данных: Ахметов Руслан Александрович.
+      Контакт для обращений по вопросам обработки персональных данных:
+      <a href="mailto:vopros.tvoy@gmail.com">vopros.tvoy@gmail.com</a>.
+    </p>
+    <p>
+      Используя Приложение, пользователь соглашается с обработкой данных в объёме и
+      для целей, описанных ниже. Приложение не требует регистрации и не создаёт
+      учётных записей.
+    </p>
 
-  <h2>7. Права пользователя</h2>
-  <p>Пользователь вправе:</p>
-  <ul>
-    <li>получить информацию об обработке своих данных;</li>
-    <li>требовать уточнения, блокирования или удаления данных, обрабатываемых оператором;</li>
-    <li>отозвать согласие на обработку;</li>
-    <li>ограничить сбор рекламного идентификатора в системных настройках устройства (раздел «Конфиденциальность» / «Реклама»).</li>
-  </ul>
-  <p>
-    Обращения направляйте на
-    <a href="mailto:vopros.tvoy@gmail.com">vopros.tvoy@gmail.com</a>.
-  </p>
+    <h2>2. Какие данные обрабатываются</h2>
+    <p>Приложение не запрашивает имя, телефон, адрес или иные контактные данные пользователя. При работе обрабатываются:</p>
+    <ul>
+      <li><strong>Рекламный идентификатор</strong> устройства (Google Advertising ID) — используется рекламным модулем.</li>
+      <li><strong>IP-адрес</strong> — передаётся при любом сетевом запросе.</li>
+      <li><strong>Технические данные устройства</strong>: модель, версия операционной системы, характеристики, необходимые для показа рекламы.</li>
+      <li><strong>Текст запроса (промпт)</strong>, который пользователь вводит для генерации изображения. Промпт передаётся на сервер оператора, где переводится и используется для генерации изображения (см. раздел 4). Не вводите в поле промпта персональные или конфиденциальные сведения.</li>
+      <li><strong>Выбранный язык интерфейса</strong> — хранится только на устройстве.</li>
+    </ul>
 
-  <h2>8. Изменения политики</h2>
-  <p>
-    Оператор может обновлять настоящую Политику. Актуальная версия всегда доступна
-    по этому адресу; дата последнего обновления указана в начале документа.
-  </p>
+    <h2>3. Цели обработки</h2>
+    <ul>
+      <li>Генерация изображения по текстовому запросу пользователя.</li>
+      <li>Перевод запроса на английский язык для повышения качества генерации.</li>
+      <li>Показ рекламы для поддержки бесплатной работы Приложения.</li>
+    </ul>
 
-  <footer>
-    © 2026 «Сгенерировать изображение». Контакт:
-    <a href="mailto:vopros.tvoy@gmail.com">vopros.tvoy@gmail.com</a>
-  </footer>
+    <h2>4. Передача данных третьим лицам</h2>
+    <p>
+      Приложение обращается напрямую только к серверу оператора (размещён в
+      Yandex Cloud, РФ) и к рекламному модулю. Сервер оператора, в свою очередь,
+      для перевода и генерации изображения обращается к сервисам ниже. Каждый
+      сервис обрабатывает данные в соответствии со своей политикой
+      конфиденциальности.
+    </p>
+    <p>
+      Рекламный модуль различается в зависимости от магазина, из которого
+      установлено Приложение, — это указано в таблице.
+    </p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Сервис</th><th>Какие данные</th><th>Назначение</th><th>Юрисдикция</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Яндекс.Реклама (Yandex Mobile Ads)<span class="note">версия из RuStore</span></td>
+            <td>Рекламный идентификатор, IP-адрес, технические данные устройства</td>
+            <td>Показ рекламы</td>
+            <td>Российская Федерация</td>
+          </tr>
+          <tr>
+            <td>Appodeal<span class="note">версия из Google Play</span></td>
+            <td>Рекламный идентификатор, IP-адрес, технические данные устройства</td>
+            <td>Показ рекламы и медиация рекламных сетей-партнёров</td>
+            <td>За пределами РФ</td>
+          </tr>
+          <tr>
+            <td>Сервер оператора (Yandex Cloud)</td>
+            <td>Текст запроса, IP-адрес</td>
+            <td>Приём запроса, перевод и генерация изображения</td>
+            <td>Российская Федерация</td>
+          </tr>
+          <tr>
+            <td>Яндекс.Переводчик (Yandex Translate)</td>
+            <td>Текст запроса</td>
+            <td>Перевод запроса (вызывается сервером оператора)</td>
+            <td>Российская Федерация</td>
+          </tr>
+          <tr>
+            <td>Pollinations (image.pollinations.ai)</td>
+            <td>Текст запроса</td>
+            <td>Генерация изображения (вызывается сервером оператора)</td>
+            <td>За пределами РФ</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      Сгенерированное изображение при сохранении записывается в галерею устройства
+      пользователя и никуда не передаётся.
+    </p>
+
+    <h2>5. Трансграничная передача</h2>
+    <p>
+      Сервис генерации изображения (Pollinations) расположен за пределами
+      Российской Федерации. Сервер оператора при генерации передаёт ему текст
+      запроса — это является трансграничной передачей данных на территорию
+      иностранного государства.
+    </p>
+    <p>
+      В версии, установленной из Google Play, рекламный модуль Appodeal также
+      расположен за пределами Российской Федерации: ему передаются рекламный
+      идентификатор, IP-адрес и технические данные устройства. В версии из
+      RuStore показ рекламы и перевод выполняются в пределах РФ.
+    </p>
+
+    <h2>6. Хранение данных</h2>
+    <p>
+      Сервер оператора обрабатывает запрос «на лету» — он передаёт промпт сервисам
+      перевода и генерации и возвращает результат, не сохраняя промпты в базе
+      данных и не формируя профилей пользователей. Сроки хранения переданных данных
+      определяются политиками сторонних сервисов, перечисленных выше. Настройки
+      Приложения хранятся локально на устройстве.
+    </p>
+
+    <h2>7. Права пользователя</h2>
+    <p>Пользователь вправе:</p>
+    <ul>
+      <li>получить информацию об обработке своих данных;</li>
+      <li>требовать уточнения, блокирования или удаления данных, обрабатываемых оператором;</li>
+      <li>отозвать согласие на обработку;</li>
+      <li>ограничить сбор рекламного идентификатора в системных настройках устройства (раздел «Конфиденциальность» / «Реклама»).</li>
+    </ul>
+    <p>
+      Обращения направляйте на
+      <a href="mailto:vopros.tvoy@gmail.com">vopros.tvoy@gmail.com</a>.
+    </p>
+
+    <h2>8. Изменения политики</h2>
+    <p>
+      Оператор может обновлять настоящую Политику. Актуальная версия всегда доступна
+      по этому адресу; дата последнего обновления указана в начале документа.
+    </p>
+
+    <footer>
+      © 2026 «Сгенерировать изображение». Контакт:
+      <a href="mailto:vopros.tvoy@gmail.com">vopros.tvoy@gmail.com</a>
+    </footer>
+  </section>
+
+  <section data-lang="en" hidden>
+    <h1>Privacy Policy</h1>
+    <p class="meta">“Generate Image” app (<code>com.generateimagefree.app</code>)</p>
+    <p class="meta">Last updated: 4 September 2026</p>
+
+    <h2>1. General</h2>
+    <p>
+      This Policy describes what data the “Generate Image” mobile app (in RuStore it is
+      published as “Сгенерировать изображение”), hereinafter the App, processes and on
+      what terms.
+    </p>
+    <p>
+      Data operator: Ruslan Aleksandrovich Akhmetov.
+      Contact for questions about personal data processing:
+      <a href="mailto:vopros.tvoy@gmail.com">vopros.tvoy@gmail.com</a>.
+    </p>
+    <p>
+      By using the App you consent to the processing of data to the extent and for the
+      purposes described below. The App requires no registration and creates no accounts.
+    </p>
+
+    <h2>2. What data is processed</h2>
+    <p>The App does not ask for your name, phone number, address or any other contact details. In operation it processes:</p>
+    <ul>
+      <li><strong>Advertising identifier</strong> of the device (Google Advertising ID) — used by the advertising module.</li>
+      <li><strong>IP address</strong> — sent with any network request.</li>
+      <li><strong>Device technical data</strong>: model, operating system version and the characteristics needed to display ads.</li>
+      <li><strong>Prompt text</strong> you enter to generate an image. The prompt is sent to the operator's server, where it is translated and used to generate the image (see section 4). Do not enter personal or confidential information in the prompt field.</li>
+      <li><strong>Selected interface language</strong> — stored on the device only.</li>
+    </ul>
+
+    <h2>3. Purposes of processing</h2>
+    <ul>
+      <li>Generating an image from the user's text prompt.</li>
+      <li>Translating the prompt into English to improve generation quality.</li>
+      <li>Displaying ads to keep the App free of charge.</li>
+    </ul>
+
+    <h2>4. Sharing data with third parties</h2>
+    <p>
+      The App communicates directly only with the operator's server (hosted in
+      Yandex Cloud, Russia) and with the advertising module. The operator's server in
+      turn calls the services listed below to translate the prompt and generate the
+      image. Each service processes data under its own privacy policy.
+    </p>
+    <p>
+      The advertising module differs depending on the store the App was installed
+      from, as noted in the table.
+    </p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Service</th><th>Data</th><th>Purpose</th><th>Jurisdiction</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Yandex Mobile Ads<span class="note">RuStore version</span></td>
+            <td>Advertising identifier, IP address, device technical data</td>
+            <td>Displaying ads</td>
+            <td>Russian Federation</td>
+          </tr>
+          <tr>
+            <td>Appodeal<span class="note">Google Play version</span></td>
+            <td>Advertising identifier, IP address, device technical data</td>
+            <td>Displaying ads and mediation of partner ad networks</td>
+            <td>Outside the Russian Federation</td>
+          </tr>
+          <tr>
+            <td>Operator's server (Yandex Cloud)</td>
+            <td>Prompt text, IP address</td>
+            <td>Receiving the request, translation and image generation</td>
+            <td>Russian Federation</td>
+          </tr>
+          <tr>
+            <td>Yandex Translate</td>
+            <td>Prompt text</td>
+            <td>Translating the prompt (called by the operator's server)</td>
+            <td>Russian Federation</td>
+          </tr>
+          <tr>
+            <td>Pollinations (image.pollinations.ai)</td>
+            <td>Prompt text</td>
+            <td>Image generation (called by the operator's server)</td>
+            <td>Outside the Russian Federation</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      When saved, the generated image is written to the device's gallery and is not
+      transmitted anywhere.
+    </p>
+
+    <h2>5. Cross-border transfer</h2>
+    <p>
+      The image generation service (Pollinations) is located outside the Russian
+      Federation. When generating an image, the operator's server sends it the prompt
+      text — this constitutes a cross-border transfer of data to a foreign country.
+    </p>
+    <p>
+      In the version installed from Google Play, the Appodeal advertising module is
+      also located outside the Russian Federation and receives the advertising
+      identifier, IP address and device technical data. In the RuStore version,
+      advertising and translation are handled within the Russian Federation.
+    </p>
+
+    <h2>6. Data retention</h2>
+    <p>
+      The operator's server processes each request on the fly: it passes the prompt to
+      the translation and generation services and returns the result, without storing
+      prompts in a database or building user profiles. Retention periods for the
+      transferred data are determined by the policies of the third-party services
+      listed above. App settings are stored locally on the device.
+    </p>
+
+    <h2>7. Your rights</h2>
+    <p>You have the right to:</p>
+    <ul>
+      <li>obtain information about the processing of your data;</li>
+      <li>request that data processed by the operator be corrected, blocked or deleted;</li>
+      <li>withdraw your consent to processing;</li>
+      <li>limit collection of the advertising identifier in your device settings (the “Privacy” / “Ads” section).</li>
+    </ul>
+    <p>
+      Send enquiries to
+      <a href="mailto:vopros.tvoy@gmail.com">vopros.tvoy@gmail.com</a>.
+    </p>
+
+    <h2>8. Changes to this Policy</h2>
+    <p>
+      The operator may update this Policy. The current version is always available at
+      this address; the date of the last update is shown at the top of the document.
+    </p>
+
+    <footer>
+      © 2026 “Generate Image”. Contact:
+      <a href="mailto:vopros.tvoy@gmail.com">vopros.tvoy@gmail.com</a>
+    </footer>
+  </section>
 </div>
+
+<script>
+  (function () {
+    var TITLES = {
+      ru: 'Политика конфиденциальности — Сгенерировать изображение',
+      en: 'Privacy Policy — Generate Image'
+    };
+
+    function apply(lang) {
+      document.documentElement.lang = lang;
+      document.title = TITLES[lang];
+      document.querySelectorAll('[data-lang]').forEach(function (el) {
+        el.hidden = el.dataset.lang !== lang;
+      });
+      document.querySelectorAll('[data-set-lang]').forEach(function (btn) {
+        btn.setAttribute('aria-pressed', String(btn.dataset.setLang === lang));
+      });
+      try { localStorage.setItem('policy-lang', lang); } catch (e) { /* private mode */ }
+    }
+
+    var saved = null;
+    try { saved = localStorage.getItem('policy-lang'); } catch (e) { /* private mode */ }
+    var browser = (navigator.language || 'en').toLowerCase().indexOf('ru') === 0 ? 'ru' : 'en';
+    apply(saved === 'ru' || saved === 'en' ? saved : browser);
+
+    document.querySelectorAll('[data-set-lang]').forEach(function (btn) {
+      btn.addEventListener('click', function () { apply(btn.dataset.setLang); });
+    });
+  })();
+</script>
 </body>
 </html>
