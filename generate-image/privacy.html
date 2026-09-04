@@ -422,10 +422,26 @@
       try { localStorage.setItem('policy-lang', lang); } catch (e) { /* private mode */ }
     }
 
+    // Accepts ?lang=en / ?lang=ru (and #en / #ru), so the app can open this
+    // page in whatever language the user picked there.
+    function fromUrl() {
+      var v = '';
+      try {
+        v = new URLSearchParams(location.search).get('lang') || '';
+      } catch (e) { /* very old browser */ }
+      if (!v && location.hash) v = location.hash.slice(1);
+      v = v.toLowerCase();
+      return (v === 'ru' || v === 'en') ? v : null;
+    }
+
     var saved = null;
     try { saved = localStorage.getItem('policy-lang'); } catch (e) { /* private mode */ }
+    if (saved !== 'ru' && saved !== 'en') saved = null;
     var browser = (navigator.language || 'en').toLowerCase().indexOf('ru') === 0 ? 'ru' : 'en';
-    apply(saved === 'ru' || saved === 'en' ? saved : browser);
+
+    // Explicit link parameter wins, then the visitor's own earlier choice,
+    // then the browser language.
+    apply(fromUrl() || saved || browser);
 
     document.querySelectorAll('[data-set-lang]').forEach(function (btn) {
       btn.addEventListener('click', function () { apply(btn.dataset.setLang); });
